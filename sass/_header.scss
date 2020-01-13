@@ -1,0 +1,46 @@
+.header{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    z-index: 10000;
+
+    .brand-container{
+        a{
+            color: #fff;
+            &:hover{
+                text-decoration: none;
+            }
+        }
+    }
+
+    .nav-header{
+        display: none;
+    }
+}
+
+.toggle-button{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+
+    .line{
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+        margin: .5rem 0;
+        transition: all .3;
+    }
+
+    .line:nth-child(3){
+        width: 60%;
+        text-align: right;
+        transition: all .3;
+        
+    }
+
+    &:hover .line{
+        width: 100%;
+    }
+}
