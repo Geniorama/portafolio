@@ -59,6 +59,10 @@ $(document).ready(function() {
                 modalWindow.classList.toggle("show-modal");
             })
         }
+
+        modalWindow.addEventListener('click', function() {
+            this.classList.toggle("show-modal");
+        })
     }
 
 
@@ -194,8 +198,47 @@ $(document).ready(function() {
     })
 
 
+    //Envio formulario
+    var formulario = document.getElementById('formulario');
+
+    formulario.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var datos = new FormData(formulario);
+        let nombre = datos.get('nombre');
+        let telefono = datos.get('telefono');
+        let correo = datos.get('correo');
+        let mensaje = datos.get('mensaje')
+
+        /*
+        let nombre = document.getElementById('nombre');
+        let telefono = document.getElementById('telefono');
+        let correo = document.getElementById('correo');
+        let mensaje = document.getElementById('mensaje');
+
+        var datos = {
+            nombre : nombre.value,
+            telefono: telefono.value,
+            correo: correo.value,
+            mensaje: mensaje.value
+        };*/
 
 
+        console.log(datos);
+
+        fetch('../send-mail.php', {
+            method: 'POST',
+            body: datos
+        })
+
+        .then(function(response) {
+            return response.json();
+        })
+
+        .then(function(myJson) {
+            console.log(myJson);
+          });
+    })
 
     
 
